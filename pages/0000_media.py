@@ -15,14 +15,12 @@ import streamlit as st
 MOVDAT = 'data/CASIO_sample_CIMG1226.mov'
 IMAGES = ('data/4colors_sense_test_org.png', 'data/4colors_sense_test.png')
 
-'''
-def imread_via_numpy(fn):
-  flg = cv2.IMREAD_COLOR # cv2.IMREAD_UNCHANGED
-  img = np.fromfile(fn, dtype=np.uint8)
-  im = cv2.imdecode(img, flg) # not use cv2.imread for jp file
-  if im.ndim == 3: im = cv2.cvtColor(im, cv2.COLOR_BGR2RGB)
-  return im
-'''
+# def imread_via_numpy(fn):
+#   flg = cv2.IMREAD_COLOR # cv2.IMREAD_UNCHANGED
+#   img = np.fromfile(fn, dtype=np.uint8)
+#   im = cv2.imdecode(img, flg) # not use cv2.imread for jp file
+#   if im.ndim == 3: im = cv2.cvtColor(im, cv2.COLOR_BGR2RGB)
+#   return im
 
 def asbytes(fn):
   b = b''
