@@ -43,7 +43,6 @@ import datetime
 import numpy as np
 from PIL import Image
 from matplotlib import pyplot as plt
-import cv2
 import pandas as pd
 import streamlit as st
 
