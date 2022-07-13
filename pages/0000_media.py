@@ -38,6 +38,11 @@ def media():
   with stc[0]:
     st.subheader('subheader 0')
 
+    st.markdown('[media](media)')
+
+    tmp = Image.open('./data/supuuu.png')
+    st.image(np.asarray(tmp, dtype=np.uint8), width=200)
+
     st.video(asbytes('./data/30Hz8Hz.wav')) # OK chrome and ff
     # st.video(asbytes('./data/32Hz8Hz.wav')) # OK chrome and ff
 
