@@ -31,7 +31,7 @@ def media():
   print('0000 media')
   ims = [Image.open(_) for _ in IMAGES]
   # ias = [cv2.cvtColor(cv2.imread(_), cv2.COLOR_BGR2RGB) for _ in IMAGES]
-  # ias = [imread_via_numpy(_) for _ in IMAGES]
+  ias = [imread_via_numpy(_) for _ in IMAGES]
 
   stc = st.columns(2)
 
