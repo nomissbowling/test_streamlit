@@ -58,8 +58,8 @@ def media():
     # st.video(f'd:/prj/test_streamlit/{MOVDAT}') # OK chrome
     # st.video('http://arch.casio.jp/file/dc/CIMG1226.mov') # OK chrome
 
-    for im in ims: st.image(im, width=200)
-    for im in ias: st.image(im, width=200)
+    st.image(ims, width=200)
+    st.image(ias, width=200)
 
   with stc[1]:
     st.subheader('subheader 1')
