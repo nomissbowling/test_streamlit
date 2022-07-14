@@ -34,12 +34,12 @@ def media():
   # ias = [cv2.cvtColor(cv2.imread(_), cv2.COLOR_BGR2RGB) for _ in IMAGES]
   ias = [imread_via_numpy(_) for _ in IMAGES]
 
-  stc = st.columns(2)
+  stc = st.columns([3, 2])
 
   with stc[0]:
     st.subheader('subheader 0')
 
-    st.markdown('[media](media)')
+    st.markdown('[media](media)', unsafe_allow_html=True)
 
     webrtc_streamer(key='webrtc example')
 
