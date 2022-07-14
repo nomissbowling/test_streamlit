@@ -10,7 +10,7 @@ from PIL import Image
 from matplotlib import pyplot as plt
 import pandas as pd
 import streamlit as st
-# import cv2
+import cv2
 
 MOVDAT = 'data/CASIO_sample_CIMG1226.mov'
 IMAGES = ('data/4colors_sense_test_org.png', 'data/4colors_sense_test.png')
