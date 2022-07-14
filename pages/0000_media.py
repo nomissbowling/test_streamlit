@@ -10,6 +10,7 @@ from PIL import Image
 from matplotlib import pyplot as plt
 import pandas as pd
 import streamlit as st
+from streamlit_webrtc import webrtc_streamer
 import cv2
 
 MOVDAT = 'data/CASIO_sample_CIMG1226.mov'
@@ -39,6 +40,8 @@ def media():
     st.subheader('subheader 0')
 
     st.markdown('[media](media)')
+
+    webrtc_streamer(key='webrtc example')
 
     tmp = Image.open('./data/supuuu.png')
     st.image(np.asarray(tmp, dtype=np.uint8), width=200)
