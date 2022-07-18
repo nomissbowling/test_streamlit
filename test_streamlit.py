@@ -69,6 +69,7 @@ def test_streamlit():
   st.write('key', st.secrets['DB_Section']['some_key'])
   st.write('lst', st.secrets['DB_Section']['some_lst'])
   st.write('dic', st.secrets['DB_Section']['some_dic'])
+  st.write('dicx', st.secrets['DB_Section']['some_dicx'])
 
   with stc[0]:
     st.subheader('subheader 0')
