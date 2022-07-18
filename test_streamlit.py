@@ -48,6 +48,9 @@ import streamlit as st
 
 CSVDAT = 'data/test_streamlit_data.csv'
 
+def dump_secrets(**kwargs):
+  return ', '.join([f'[{k}]=[{kwargs[k]}]' for k in kwargs])
+
 def test_streamlit():
   print('test streamlit')
   df = pd.read_csv(f'./{CSVDAT}', index_col='月')
@@ -55,6 +58,15 @@ def test_streamlit():
   st.title('title')
   st.caption('caption')
   stc = st.columns(3)
+
+  st.write('public env', os.environ['DUMMY'])
+  st.write('creds', dump_secrets(**st.secrets.DB_Credentials))
+  st.write('uid', st.secrets['DB_Credentials']['uid'])
+  st.write('token', st.secrets['DB_Credentials']['token'])
+  st.write('sec', dump_secrets(**st.secrets.DB_Section))
+  st.write('key', st.secrets['DB_Section']['some_key'])
+  st.write('lst', st.secrets['DB_Section']['some_lst'])
+  st.write('dic', st.secrets['DB_Section']['some_dic'])
 
   with stc[0]:
     st.subheader('subheader 0')
