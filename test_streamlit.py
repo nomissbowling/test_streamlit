@@ -60,6 +60,8 @@ def test_streamlit():
   stc = st.columns(3)
 
   st.write('public env', os.environ['DUMMY'])
+  st.write('secrets', st.secrets)
+  st.write('creds', st.secrets.DB_Credentials)
   st.write('creds', dump_secrets(**st.secrets.DB_Credentials))
   st.write('uid', st.secrets['DB_Credentials']['uid'])
   st.write('token', st.secrets['DB_Credentials']['token'])
