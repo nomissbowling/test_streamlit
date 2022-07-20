@@ -45,7 +45,9 @@ from PIL import Image
 from matplotlib import pyplot as plt
 import pandas as pd
 import streamlit as st
+import sqlite3 as sl3
 
+DB = 'data/test_streamlit_db.sl3'
 OUTDAT = 'data/test_streamlit_out.csv'
 CSVDAT = 'data/test_streamlit_data.csv'
 
@@ -64,6 +66,12 @@ def test_streamlit():
     f.write('test\x0A'.encode('utf-8'))
   with open(f'./{OUTDAT}', 'rb') as f:
     st.write(f.read().decode('utf-8'))
+
+  cn = sl3.connect(f'./{DB}')
+  cur = cn.cursor()
+  for row in cur.execute('''select id, c1 from tbl order by id;'''):
+    st.write(f'id: {row[0]}, c1: [{row[1]}]')
+  cn.close()
 
   st.secrets['DB_Section']['some_new'] = 'new' # not set (load only once ?)
   st.secrets['DB_Section']['some_lst'].append('new') # appends every reload
