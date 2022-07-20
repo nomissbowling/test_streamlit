@@ -46,6 +46,7 @@ from matplotlib import pyplot as plt
 import pandas as pd
 import streamlit as st
 
+OUTDAT = 'data/test_streamlit_out.csv'
 CSVDAT = 'data/test_streamlit_data.csv'
 
 def dump_secrets(**kwargs):
@@ -58,6 +59,9 @@ def test_streamlit():
   st.title('title')
   st.caption('caption')
   stc = st.columns(3)
+
+  with open(f'./{OUTDAT}', 'wb') as f:
+    f.write('test\x0A'.encode('utf-8'))
 
   st.secrets['DB_Section']['some_new'] = 'new' # not set (load only once ?)
   st.secrets['DB_Section']['some_lst'].append('new') # appends every reload
