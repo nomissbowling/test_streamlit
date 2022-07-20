@@ -67,6 +67,7 @@ def test_streamlit():
   with open(f'./{OUTDAT}', 'rb') as f:
     st.write(f.read().decode('utf-8'))
 
+  # DB will be refreshed everytime push source by latest db file on the GitHub
   # create table tbl (id integer primary key autoincrement, c1 varchar(16));
   cn = sl3.connect(f'./{DB}')
   cur = cn.cursor()
