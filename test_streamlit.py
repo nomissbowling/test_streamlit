@@ -59,6 +59,9 @@ def test_streamlit():
   st.caption('caption')
   stc = st.columns(3)
 
+  st.secrets['DB_Section']['some_new'] = 'new' # not set (load only once ?)
+  st.secrets['DB_Section']['some_lst'].append('new') # appends every reload
+  os.environ['DUMMY'] = 'hoge'
   st.write('public env', os.environ['DUMMY'])
   st.write('secrets', st.secrets)
   st.write('creds', st.secrets.DB_Credentials)
