@@ -62,6 +62,8 @@ def test_streamlit():
 
   with open(f'./{OUTDAT}', 'wb') as f:
     f.write('test\x0A'.encode('utf-8'))
+  with open(f'./{OUTDAT}', 'rb') as f:
+    st.write(f.read().decode('utf-8'))
 
   st.secrets['DB_Section']['some_new'] = 'new' # not set (load only once ?)
   st.secrets['DB_Section']['some_lst'].append('new') # appends every reload
