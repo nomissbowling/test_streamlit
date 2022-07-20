@@ -69,6 +69,8 @@ def test_streamlit():
 
   cn = sl3.connect(f'./{DB}')
   cur = cn.cursor()
+  cur.execute('''insert into tbl (c1) values ('new');''')
+  cn.commit()
   for row in cur.execute('''select id, c1 from tbl order by id;'''):
     st.write(f'id: {row[0]}, c1: [{row[1]}]')
   cn.close()
