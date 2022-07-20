@@ -67,8 +67,10 @@ def test_streamlit():
   with open(f'./{OUTDAT}', 'rb') as f:
     st.write(f.read().decode('utf-8'))
 
+  # create table tbl (id integer primary key autoincrement, c1 varchar(16));
   cn = sl3.connect(f'./{DB}')
   cur = cn.cursor()
+  cur.execute('''delete from tbl where id >= 1 and id < 7;''')
   cur.execute('''insert into tbl (c1) values ('new');''')
   cn.commit()
   for row in cur.execute('''select id, c1 from tbl order by id;'''):
