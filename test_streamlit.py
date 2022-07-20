@@ -70,13 +70,14 @@ def test_streamlit():
 
   # DB will be refreshed everytime push source by latest db file on the GitHub
   # create table tbl (id integer primary key autoincrement, c1 varchar(16));
-  cn = sl3.connect(f'./{DB}')
+  cn = sl3.connect(f'./{DB}') # , detect_types=sl3.PARSE_COLNAMES)
+  cn.row_factory = sl3.Row
   cur = cn.cursor()
-  cur.execute('''delete from tbl where id >= 1 and id < 7;''')
+  cur.execute('''delete from tbl where id > 1 and id < 7;''')
   cur.execute('''insert into tbl (c1) values ('new');''')
   cn.commit()
   for row in cur.execute('''select id, c1 from tbl order by id;'''):
-    st.write(f'id: {row[0]}, c1: [{row[1]}]')
+    st.write(f'''id: {row['id']}, c1: [{row['c1']}]''')
   cn.close()
 
   st.secrets['DB_Section']['some_new'] = 'new' # not set (load only once ?)
