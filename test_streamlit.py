@@ -62,6 +62,7 @@ def test_streamlit():
   st.caption('caption')
   stc = st.columns(3)
 
+  # a file will be refreshed everytime push source by latest file on the GitHub
   with open(f'./{OUTDAT}', 'wb') as f:
     f.write('test\x0A'.encode('utf-8'))
   with open(f'./{OUTDAT}', 'rb') as f:
