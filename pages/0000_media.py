@@ -13,6 +13,7 @@ import streamlit as st
 from streamlit_webrtc import webrtc_streamer
 import cv2
 
+ICO = 'data/supuuu.png'
 MOVDAT = 'data/CASIO_sample_CIMG1226.mov'
 IMAGES = ('data/4colors_sense_test_org.png', 'data/4colors_sense_test.png')
 
@@ -33,6 +34,9 @@ def media():
   ims = [Image.open(_) for _ in IMAGES]
   # ias = [cv2.cvtColor(cv2.imread(_), cv2.COLOR_BGR2RGB) for _ in IMAGES]
   ias = [imread_via_numpy(_) for _ in IMAGES]
+
+  ico = Image.open(f'./{ICO}')
+  st.set_page_config(page_title='Hello', page_icon=ico) # ':smiley:')
 
   stc = st.columns([3, 2])
 
