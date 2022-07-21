@@ -47,6 +47,7 @@ import pandas as pd
 import streamlit as st
 import sqlite3 as sl3
 
+ICO = 'data/supuuu.png'
 DB = 'data/test_streamlit_db.sl3'
 OUTDAT = 'data/test_streamlit_out.csv'
 CSVDAT = 'data/test_streamlit_data.csv'
@@ -58,7 +59,8 @@ def test_streamlit():
   print('test streamlit')
   df = pd.read_csv(f'./{CSVDAT}', index_col='月')
 
-  st.set_page_config(page_title='Hello', page_icon=':smiley:')
+  ico = Image.open('./{ICO}')
+  st.set_page_config(page_title='Hello', page_icon=ico) # ':smiley:')
 
   st.title('title')
   st.caption('caption')
