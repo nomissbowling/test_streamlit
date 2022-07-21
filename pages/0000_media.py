@@ -38,6 +38,7 @@ def media():
   ico = Image.open(f'./{ICO}')
   st.set_page_config(page_title='Mello Media', page_icon=ico, layout='wide')
 
+  st.header('Media')
   stc = st.columns([3, 2])
 
   with stc[0]:
