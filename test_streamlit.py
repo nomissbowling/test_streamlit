@@ -66,7 +66,7 @@ def test_streamlit():
 
   # a file will be refreshed everytime push source by latest file on the GitHub
   with open(f'./{OUTDAT}', 'wb') as f:
-    f.write('test\x0A'.encode('utf-8'))
+    f.write(f'test_{lr}\x0A'.encode('utf-8'))
   with open(f'./{OUTDAT}', 'rb') as f:
     st.write(f.read().decode('utf-8'))
 
@@ -87,8 +87,9 @@ def test_streamlit():
   cn.execute('vacuum') # cn.execute('vacuum into ?', (f'./{DB}.vacuum.sl3', ))
   cn.close()
 
+  l = len(st.secrets['DB_Section']['some_lst'])
+  st.secrets['DB_Section']['some_lst'].append(f'{l}') # appends every reload
   st.secrets['DB_Section']['some_new'] = 'new' # not set (load only once ?)
-  st.secrets['DB_Section']['some_lst'].append('new') # appends every reload
   os.environ['DUMMY'] = 'hoge'
   st.write('public env', os.environ['DUMMY'])
   st.write('secrets', st.secrets)
