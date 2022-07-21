@@ -62,6 +62,8 @@ def test_streamlit():
   st.caption('caption')
   stc = st.columns(3)
 
+  lr = st.slider('L<->R', min_value=2, max_value=99)
+
   # a file will be refreshed everytime push source by latest file on the GitHub
   with open(f'./{OUTDAT}', 'wb') as f:
     f.write('test\x0A'.encode('utf-8'))
@@ -73,7 +75,7 @@ def test_streamlit():
   cn = sl3.connect(f'./{DB}') # , detect_types=sl3.PARSE_COLNAMES)
   cn.row_factory = sl3.Row
   cur = cn.cursor()
-  cur.execute('''delete from tbl where id > 1 and id < 7;''')
+  cur.execute('''delete from tbl where id > 1 and id < ?;''', (lr, ))
   cur.execute('''insert into tbl (c1) values ('new');''')
   cn.commit()
   for row in cur.execute('''select id, c1 from tbl order by id;'''):
