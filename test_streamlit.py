@@ -60,7 +60,7 @@ def test_streamlit():
   df = pd.read_csv(f'./{CSVDAT}', index_col='月')
 
   ico = Image.open(f'./{ICO}')
-  st.set_page_config(page_title='Hello', page_icon=ico) # ':smiley:')
+  st.set_page_config(page_title='Hello', page_icon=ico, layout='wide')
 
   st.title('title')
   st.caption('caption')

@@ -36,7 +36,7 @@ def media():
   ias = [imread_via_numpy(_) for _ in IMAGES]
 
   ico = Image.open(f'./{ICO}')
-  st.set_page_config(page_title='Hello', page_icon=ico) # ':smiley:')
+  st.set_page_config(page_title='Mello Media', page_icon=ico, layout='wide')
 
   stc = st.columns([3, 2])
 
