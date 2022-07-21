@@ -80,6 +80,11 @@ def test_streamlit():
     st.write(f'''id: {row['id']}, c1: [{row['c1']}]''')
   cn.close()
 
+  # to vacuum sqlite3
+  cn = sl3.connect(f'./{DB}', isolation_level=None)
+  cn.execute('vacuum') # cn.execute('vacuum into ?', (f'./{DB}.vacuum.sl3', ))
+  cn.close()
+
   st.secrets['DB_Section']['some_new'] = 'new' # not set (load only once ?)
   st.secrets['DB_Section']['some_lst'].append('new') # appends every reload
   os.environ['DUMMY'] = 'hoge'
