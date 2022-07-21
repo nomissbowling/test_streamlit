@@ -58,6 +58,8 @@ def test_streamlit():
   print('test streamlit')
   df = pd.read_csv(f'./{CSVDAT}', index_col='月')
 
+  st.set_page_config(page_title='Hello', page_icon=':smiley:')
+
   st.title('title')
   st.caption('caption')
   stc = st.columns(3)
