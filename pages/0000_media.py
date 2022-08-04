@@ -12,10 +12,13 @@ import pandas as pd
 import streamlit as st
 from streamlit_webrtc import webrtc_streamer
 import cv2
+import urllib.request
 
 ICO = 'data/supuuu.png'
 MOVDAT = 'data/CASIO_sample_CIMG1226.mov'
 IMAGES = ('data/4colors_sense_test_org.png', 'data/4colors_sense_test.png')
+
+URL = 'https://gist.githubusercontent.com/nomissbowling/7382984d890cda695d875f86b70743e0/raw/7687ed03f9a1f024290e02d1eed0d205dd5160de/bowling.md'
 
 def imread_via_numpy(fn):
   flg = cv2.IMREAD_COLOR # cv2.IMREAD_UNCHANGED
@@ -37,6 +40,10 @@ def media():
 
   ico = Image.open(f'./{ICO}')
   st.set_page_config(page_title='Mello Media', page_icon=ico, layout='wide')
+
+  # bdy = '- [test0](https://youtube.com/)'
+  bdy = urllib.request.urlopen(URL).read().decode('utf-8')
+  bdy = '\n'.join(bdy.split('\nvideos\n======\n')[0].split('\n')[:2+27])
 
   st.header('Media')
   stc = st.columns([3, 2])
@@ -68,6 +75,8 @@ def media():
 
   with stc[1]:
     st.subheader('subheader 1')
+
+    st.markdown(bdy, unsafe_allow_html=True)
 
     st.text('text\nabc\nxyz')
     code = '''
