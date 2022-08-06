@@ -13,6 +13,7 @@ import streamlit as st
 from streamlit_webrtc import webrtc_streamer
 import cv2
 import urllib.request
+import qrcode
 
 ICO = 'data/supuuu.png'
 MOVDAT = 'data/CASIO_sample_CIMG1226.mov'
@@ -41,6 +42,12 @@ def media():
   ico = Image.open(f'./{ICO}')
   st.set_page_config(page_title='Mello Media', page_icon=ico, layout='wide')
 
+  qr = qrcode.QRCode(version=2, # 1 to 40
+    error_correction=qrcode.constants.ERROR_CORRECT_M, # L M Q H
+    box_size=4, border=8)
+  qr.add_data(URL)
+  qim = qr.make_image(fill_color='#000000', back_color='#ffffff')
+
   # bdy = '- [test0](https://youtube.com/)'
   bdy = urllib.request.urlopen(URL).read().decode('utf-8')
   bdy = '\n'.join(bdy.split('\nvideos\n======\n')[0].split('\n')[:2+27])
@@ -50,6 +57,8 @@ def media():
 
   with stc[0]:
     st.subheader('subheader 0')
+
+    st.image(np.asarray(qim, dtype=np.uint8), width=200)
 
     st.markdown('[media](media)', unsafe_allow_html=True)
 
