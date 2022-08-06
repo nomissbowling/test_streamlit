@@ -14,6 +14,7 @@ from streamlit_webrtc import webrtc_streamer
 import cv2
 import urllib.request
 import qrcode
+from pyzbar import pyzbar
 
 ICO = 'data/supuuu.png'
 MOVDAT = 'data/CASIO_sample_CIMG1226.mov'
@@ -47,6 +48,8 @@ def media():
     box_size=4, border=8)
   qr.add_data(URL)
   qim = qr.make_image(fill_color='#000000', back_color='#ffffff')
+  qim = np.asarray(qim, dtype=np.uint8)
+  qtx = [_[0].decode('utf-8') for _ in pyzbar.decode(qim)]
 
   # bdy = '- [test0](https://youtube.com/)'
   bdy = urllib.request.urlopen(URL).read().decode('utf-8')
@@ -58,7 +61,8 @@ def media():
   with stc[0]:
     st.subheader('subheader 0')
 
-    st.image(np.asarray(qim, dtype=np.uint8), width=200)
+    for tx in qtx: st.text(tx)
+    st.image(qim, width=200)
 
     st.markdown('[media](media)', unsafe_allow_html=True)
 
