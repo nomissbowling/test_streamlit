@@ -21,7 +21,7 @@ ICO = 'data/supuuu.png'
 MOVDAT = 'data/CASIO_sample_CIMG1226.mov'
 IMAGES = ('data/4colors_sense_test_org.png', 'data/4colors_sense_test.png')
 
-URL = 'https://gist.githubusercontent.com/nomissbowling/7382984d890cda695d875f86b70743e0/raw/7687ed03f9a1f024290e02d1eed0d205dd5160de/bowling.md'
+URL = 'https://gist.githubusercontent.com/nomissbowling/7382984d890cda695d875f86b70743e0/raw/29b7f344f030888433ee15bd0660bb8548419b00/bowling.md'
 
 def imread_via_numpy(fn):
   flg = cv2.IMREAD_COLOR # cv2.IMREAD_UNCHANGED
