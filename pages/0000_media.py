@@ -5,6 +5,8 @@
 
 import sys, os
 import datetime
+import urllib.request
+from bs4 import BeautifulSoup
 import numpy as np
 from PIL import Image
 from matplotlib import pyplot as plt
@@ -12,11 +14,9 @@ import pandas as pd
 import streamlit as st
 from streamlit_webrtc import webrtc_streamer
 import cv2
-import urllib.request
 import qrcode
 #(Unable to find zbar shared library)
 #from pyzbar import pyzbar
-from bs4 import BeautifulSoup
 
 ICO = 'data/supuuu.png'
 MOVDAT = 'data/CASIO_sample_CIMG1226.mov'
