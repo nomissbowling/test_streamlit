@@ -5,6 +5,5 @@ pandas>=1.2.3
 opencv-python-headless
 qrcode
 pyzbar
-BeautifulSoup
 streamlit
 streamlit-webrtc
