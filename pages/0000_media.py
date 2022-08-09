@@ -55,7 +55,7 @@ def media():
 
   # bdy = '- [test0](https://youtube.com/)'
   bdy = urllib.request.urlopen(URL).read().decode('utf-8')
-  bdy = '\n'.join(bdy.split('\nvideos\n======\n')[0].split('\n')[:2+27])
+  bdy = '\n'.join(bdy.split('\nvideos\n======\n')[0].split('\n')[:2+33])
 
   st.header('Media')
   stc = st.columns([3, 2])
