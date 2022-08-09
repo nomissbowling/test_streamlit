@@ -16,12 +16,13 @@ import urllib.request
 import qrcode
 #(Unable to find zbar shared library)
 #from pyzbar import pyzbar
+from bs4 import BeautifulSoup
 
 ICO = 'data/supuuu.png'
 MOVDAT = 'data/CASIO_sample_CIMG1226.mov'
 IMAGES = ('data/4colors_sense_test_org.png', 'data/4colors_sense_test.png')
 
-URL = 'https://gist.githubusercontent.com/nomissbowling/7382984d890cda695d875f86b70743e0/raw/29b7f344f030888433ee15bd0660bb8548419b00/bowling.md'
+URL = 'https://gist.github.com/nomissbowling/7382984d890cda695d875f86b70743e0'
 
 def imread_via_numpy(fn):
   flg = cv2.IMREAD_COLOR # cv2.IMREAD_UNCHANGED
@@ -55,6 +56,10 @@ def media():
 
   # bdy = '- [test0](https://youtube.com/)'
   bdy = urllib.request.urlopen(URL).read().decode('utf-8')
+  bs = BeautifulSoup(bdy, features='html.parser')
+  src = bs.find('a', class_='btn-sm btn')['href']
+  src = f'https://gist.github.com{src}'
+  bdy = urllib.request.urlopen(src).read().decode('utf-8')
   bdy = '\n'.join(bdy.split('\nvideos\n======\n')[0].split('\n')[:2+33])
 
   st.header('Media')
