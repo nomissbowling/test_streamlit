@@ -43,7 +43,7 @@ def media():
   ias = [imread_via_numpy(_) for _ in IMAGES]
 
   ico = Image.open(f'./{ICO}')
-  st.set_page_config(page_title='Mello Media', page_icon=ico, layout='wide')
+  st.set_page_config(page_title='Hello Media', page_icon=ico, layout='wide')
 
   qr = qrcode.QRCode(version=2, # 1 to 40
     error_correction=qrcode.constants.ERROR_CORRECT_M, # L M Q H
