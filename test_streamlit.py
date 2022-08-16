@@ -144,6 +144,9 @@ def test_streamlit():
     fig = plt.figure(figsize=(16, 9), dpi=96)
     ax = fig.add_subplot(1, 1, 1)
     ax.plot(df.index, df['2021年'])
+    ax.plot(range(2, 12, 2), [1 + (lr // 4)] * 5, 'r-')
+    ax.set_xlim([0, 14])
+    ax.set_ylim([0, 30])
     ax.set_title('matplotlib 0')
     st.pyplot(fig)
 

@@ -60,7 +60,7 @@ def media():
   src = bs.find('a', class_='btn-sm btn')['href']
   src = f'https://gist.github.com{src}'
   bdy = urllib.request.urlopen(src).read().decode('utf-8')
-  bdy = '\n'.join(bdy.split('\nvideos\n======\n')[0].split('\n')[:2+33])
+  bdy = '\n'.join(bdy.split('\nvideos\n======\n')[0].split('\n')[:2+35])
 
   st.header('Media')
   stc = st.columns([3, 2])
